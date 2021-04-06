@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>EGADGETS-Admin</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    {%load static%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+        }
+
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+
+        .navbar .hiddenitem .hide_ul li{
+            display: none; 
+        }
+        .sidebar-fixed {
+            height: 100vh;
+            width: 270px;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            z-index: 1050;
+            background-color: #fff;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .sidebar-fixed .list-group .active {
+            -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .sidebar-fixed .logo-wrapper {
+            padding: 2.5rem;
+        }
+
+        .sidebar-fixed .logo-wrapper img {
+            max-height: 50px;
+        }
+
+        @media (min-width: 1200px) {
+            .page-footer,
+            main {
+                padding-left: 270px;
+            }
+        }
+
+        @media (max-width: 1199.98px) {
+            .sidebar-fixed {
+                display: none;
+            }
+            .navbar .hiddenitem .hide_ul li{
+            display: block; 
+
+            .navbar{
+                padding-bottom: 10px;
+            }
+        }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark darken-3 scrolling-navbar">
+            <div class="container-fluid text-right ml-5">
+                <!-- Brand -->
+                <a style="margin-left:280px;" class="navbar-brand waves-effect" href="{% url 'eg_admin' %}" target="_blank">
+                    <strong class="text-light text-right">EGADGETS ADMIN DASHBOARD</strong>
+                </a>
+
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse hiddenitem" id="navbarSupportedContent">
+                    <!-- Left -->
+                    <ul class="navbar-nav mr-auto hide_ul">
+                    
+                       <li class="nav-item">
+                        <a href="{% url 'orderview' %}" class="nav-link text-white waves-effect">
+                        </i>Orders</a>
+                       </li>
+
+    
+                       <li class="nav-item">
+                        <a href="#" class="nav-link text-white waves-effect">
+                            Products</a>
+                       </li>
+                       
+                       <li class="nav-item">
+                        <a href="#" class="nav-link text-white waves-effect">
+                            Category</a>
+                       </li>       
+                    </ul>
+                    <ul>
+                        <li style="list-style-type: none;" class="nav-item">
+                            <a href="{% url 'home' %}" class="nav-link text-white waves-effect">
+                                visit site</a>
+                           </li>   
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar -->
+
+        <!-- Sidebar -->
+        <div class="sidebar-fixed position-fixed pt-4">
+            <div class="list-group list-group-flush">
+                <a href="{% url 'eg_admin' %}" class="list-group-item active mdb-color waves-effect">
+                    <i class="fas fa-chart-pie mr-3"></i>Dashboard
+                </a>
+               
+                <a href="{% url 'orderview' %}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-table mr-3"></i>Orders</a>
+               
+
+                <a href="{% url 'product_view' %}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-list mr-3"></i>
+                    Products</a>
+
+                <a href="{% url 'category_view' %}" class="list-group-item list-group-item-action waves-effect">
+                    <i class="fas fa-address-card mr-3"></i>
+                    Category</a>
+            </div>
+        </div>
+        <!-- Sidebar -->
+    </header>
+    <!--Main Navigation-->
+
+    {% block admin%}
+    {% endblock %}
+
+
+
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mdb-color darken-4 mt-4 wow fadeIn">
+        <hr class="my-4" />
+
+
+        <!-- Social icons -->
+
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2019 Copyright:
+            <a href="#" target="_blank"> egadgets.com </a>
+        </div>
+        <!--/.Copyright-->
+    </footer>
+    <!-- jQuery -->
+    {%load static%}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+    <script type="text/javascript">
+        // Animations initialization
+        new WOW().init();
+    </script>
+
+</body>
+
+</html>

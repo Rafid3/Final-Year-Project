@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+{% load crispy_forms_tags %}
+
+{%block content%}
+
+{% load static %}
+
+<!--Product Section-->
+ <div class="text-center d-flex justify-content-center py-4 px-4">
+   <form class="form-inline mx-5">
+      {{mFilter.form.title | as_crispy_field }}
+    <button class="btn btn-sm btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+  </form>
+ </div>
+<div class="container p-4">
+
+  <div class="row row-cols-4">
+    {% for i in product %}
+    <div class="col p-4" id="{{i.id}}">
+      <div class="card">
+        <img src="{{ i.product_image.url }}" style="object-fit: cover;width: 100%;height: 200px;" class="card-img-top" alt="loading...">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{i.title}}</h5>
+          <p class="text-secondary"></p>{{i.description}}</p>
+          <p class="text-secondary"></p>Price: ৳ {{i.price}}</p>
+          <div class="text-center">
+            <a href="{% url 'cart' i.id %}#{{i.id}}" type="button" class="btn btn-warning">add to cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+{%endblock content%}

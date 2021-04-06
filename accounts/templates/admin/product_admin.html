@@ -1,0 +1,98 @@
+{% extends "admin.html" %} {% block admin%} {% load crispy_forms_tags %}
+<main class="pt-5 mx-lg-5">
+  <div class="container-fluid mt-1">
+    <!-- Heading -->
+    <div class="card mt-5 mb-4 wow fadeIn">
+      <!--Card content-->
+      <div class="card-body d-sm-flex justify-content-between">
+        <h4 class="mb-2 mb-sm-0 pt-1">
+          <span>Products</span>
+        </h4>
+
+        <form method="GET">
+          <!-- Default input -->
+          <div class="row">
+            <div class="col-md-4">
+              {{mFilter.form.title | as_crispy_field }}
+            </div>
+            <div class="col-md-4">
+              {{mFilter.form.category | as_crispy_field }}
+            </div>
+            <div class="col-md-4 mt-4 pt-2">
+              <button class="btn btn-info btn-md" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+              <a
+                href="{% url 'addproduct' %}"
+                class="animated shake delay-2s btn btn-warning btn-md"
+                ><i class="fas fa-plus-circle"></i
+              ></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Heading -->
+
+    <div class="row wow fadeIn">
+      <!--Grid column-->
+      <div class="col-md-12 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <div class="card-body">
+            <!-- Table  -->
+            <table class="table table-hover">
+              <!-- Table head -->
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for i in product%}
+                <tr>
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>
+                    <p>{{ i.title }}</p>
+                  
+                  </td>
+                   <td>
+                      <p class="badge badge-dark p-2">{{i.category}}</p>
+                  </td>
+                  <td>
+                    <p>{{ i.description }}</p>
+                  </td>
+                  <td> ৳ {{ i.price }}</td>
+                  <td>
+                    <a
+                      class="btn btn-secondary btn-sm p-1 px-2"
+                      href="{% url 'product_update' i.id%}"
+                      ><i class="fas fa-edit"></i
+                    ></a>
+                    <a
+                      class="btn btn-danger btn-sm p-1 px-2"
+                      href="{% url 'product_delete' i.id%}"
+                      ><i class="fas fa-times"></i
+                    ></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+              <!-- Table body -->
+            </table>
+            <!-- Table  -->
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html"%}
+
+{%block content%}
+{%load static %}
+
+<div class="container mt-5 mb-5 text-center">
+  <br />
+  <h2 class="text-center mt-4">Thanks,for your Orders</h2>
+  <img
+    src="{% static 'images/payment-successful.png' %}"
+    class="img-fluid"
+    width="150"
+    alt="Responsive image"
+  />
+  <br />
+  <a href="{% url 'orders' %}" class="mt-2 btn btn-dark">View Active Orders</a>
+</div>
+{%endblock content%}
